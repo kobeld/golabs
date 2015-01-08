@@ -51,8 +51,9 @@ func (this *Task) GetEType() string {
 }
 
 type Entry struct {
-	Post `,inline`
-	Task `,inline`
+	base       `,inline`
+	AuthorName string
+	OwnerName  string
 }
 
 func (this *Entry) GetEType() string {
@@ -73,7 +74,7 @@ func main() {
 	// err = db.Save(ENTRIES, task)
 	// panicErr(err)
 
-	entries := []*Entry{}
+	entries := []Record{}
 
 	err := db.FindAll(ENTRIES, bson.M{}, &entries)
 	panicErr(err)

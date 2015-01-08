@@ -21,7 +21,9 @@ func main() {
 	inlineHelps ^= INLINE_CHAT
 
 	hasVideo := inlineHelps & INLINE_VIDEO
+	hasText := inlineHelps & INLINE_TEXT
 
 	println(inlineHelps)
 	println(hasVideo)
+	println(hasText)
 }
