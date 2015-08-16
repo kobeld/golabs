@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>PubNub Javascript</title>
+
+
+	</head>
+	<body>
+
+		<h1>This is the PubNub Javascript SDK</h1>
+
+		<!-- View the Full Documentation. -->
+		<!-- Include the PubNub Library -->
+		<script src="https://cdn.pubnub.com/pubnub-dev.js"></script>
+		<!-- Instantiate PubNub -->
+		<script type="text/javascript">
+
+		var PUBNUB_demo = PUBNUB.init({
+			publish_key: 'pub-c-a8918f86-4327-4420-9b5f-a27220dc2b84',
+			subscribe_key: 'sub-c-d05a1540-39a5-11e5-b811-0619f8945a4f'
+		});
+
+		PUBNUB_demo.subscribe({
+			channel: 'demo_first',
+			message: function(m){console.log(m)},
+			connect : function() {
+				console.log("First");
+			}
+		});
+
+		PUBNUB_demo.subscribe({
+			channel: 'demo_second',
+			message: function(m){console.log(m)},
+			connect : function() {
+				console.log("Second");
+			}
+		});
+
+		PUBNUB_demo.subscribe({
+			channel: 'demo_third',
+			message: function(m){console.log(m)},
+			connect : function() {
+				console.log("Third");
+			}
+		});
+
+
+		function publish() {
+			PUBNUB_demo.publish({
+				channel: 'demo_tutorial',
+				message: {"text":"Hey!"}
+			});
+		}
+
+		</script>
+	</body>
+</html>
