@@ -1,3 +1,7 @@
+# How to build?
+
+`$ docker build -t golang-docker .`
+
 # How to run?
 
 `$ docker run --publish 3000:8080 --name goweb golang-docker` or
