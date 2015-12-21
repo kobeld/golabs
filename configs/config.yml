@@ -1,0 +1,11 @@
+APPName: test
+
+DB:
+    Name:     test
+    User:     test
+    Password: test
+    Port:     1234
+
+Contacts:
+- Name: i test
+  Email: test@test.com
