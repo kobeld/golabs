@@ -7,6 +7,10 @@ import (
 func main() {
 	str, _ := randutil.AlphaString(10)
 	println(str)
+
+	str, _ = randutil.String(4, randutil.Numerals)
+	println(str)
+
 }
 
 /*
