@@ -33,9 +33,9 @@ func main() {
 
 		println("hehehehehe")
 		p := &cmpp.CmppQueryReqPkt{
-			QueryAt: "20160511",
-			Type:    1,
-			Code:    "BJYG",
+			QueryAt: "20160512",
+			Type:    0,
+			// Code:    "BJYG",
 		}
 
 		println("Start to send req")

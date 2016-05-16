@@ -34,7 +34,7 @@ func main() {
 
 		println("hehehehehe")
 		//submit a message
-		cont, err := cmpputils.Utf8ToUcs2("测试gocmpp submit")
+		cont, err := cmpputils.Utf8ToUcs2("gocmpp submit")
 		if err != nil {
 			fmt.Printf("utf8 to ucs2 transform err: %s.", err)
 			return
@@ -46,20 +46,20 @@ func main() {
 			MsgLevel:           1,
 			ServiceId:          "BJYG",
 			FeeUserType:        2,
-			FeeTerminalId:      "",
-			FeeTerminalType:    0,
-			MsgFmt:             8,
-			MsgSrc:             "150026",
-			FeeType:            "01",
-			FeeCode:            "11",
-			ValidTime:          "151105131555101+",
-			AtTime:             "",
-			SrcId:              "1064899150026",
-			DestUsrTl:          1,
-			DestTerminalId:     []string{"1064820137721"},
-			DestTerminalType:   0,
-			MsgLength:          uint8(len(cont)),
-			MsgContent:         cont,
+			// FeeTerminalId:      "",
+			FeeTerminalType:  1,
+			MsgFmt:           8,
+			MsgSrc:           "150026",
+			FeeType:          "01",
+			FeeCode:          "11",
+			ValidTime:        "",
+			AtTime:           "",
+			SrcId:            "1064899150026",
+			DestUsrTl:        1,
+			DestTerminalId:   []string{"1064820137721"},
+			DestTerminalType: 1,
+			MsgLength:        uint8(len(cont)),
+			MsgContent:       cont,
 		}
 
 		println("Start to send req")
