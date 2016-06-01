@@ -21,8 +21,8 @@ func main() {
 	client := cmpp.NewClient(cmpp.V30)
 	defer client.Disconnect()
 
-	err := client.Connect("183.230.96.94:17890", user, pwd, connectTimeout)
-	// err := client.Connect("123.59.129.126:8080", user, pwd, connectTimeout)
+	// err := client.Connect("183.230.96.94:17890", user, pwd, connectTimeout)
+	err := client.Connect("123.59.129.126:8080", user, pwd, connectTimeout)
 	if goutils.HasErrorAndPrintStack(err) {
 		return
 	}

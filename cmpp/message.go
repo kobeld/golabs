@@ -8,7 +8,7 @@ import (
 	"github.com/kobeld/goutils"
 
 	cmpp "github.com/bigwhite/gocmpp"
-	"github.com/bigwhite/gocmpp/utils"
+	cmpputils "github.com/bigwhite/gocmpp/utils"
 )
 
 const (
@@ -23,6 +23,7 @@ func main() {
 	defer client.Disconnect()
 
 	err := client.Connect("123.59.129.126:8080", user, pwd, connectTimeout)
+	// err := client.Connect("183.230.96.94:17890", user, pwd, connectTimeout)
 	// err := client.Connect("localhost:5000", user, pwd, connectTimeout)
 	if goutils.HasErrorAndPrintStack(err) {
 		return
@@ -32,37 +33,38 @@ func main() {
 	go func() {
 		time.Sleep(2 * time.Second)
 
-		println("hehehehehe")
 		//submit a message
-		cont, err := cmpputils.Utf8ToUcs2("gocmpp submit")
+		cont, err := cmpputils.Utf8ToUcs2("Hello cmpp")
 		if err != nil {
 			fmt.Printf("utf8 to ucs2 transform err: %s.", err)
 			return
 		}
 		p := &cmpp.Cmpp3SubmitReqPkt{
+			MsgId:              1,
 			PkTotal:            1,
 			PkNumber:           1,
 			RegisteredDelivery: 1,
-			MsgLevel:           1,
+			MsgLevel:           0,
 			ServiceId:          "BJYG",
-			FeeUserType:        2,
-			// FeeTerminalId:      "",
-			FeeTerminalType:  1,
+
+			FeeUserType: 2,
+			// FeeTerminalId:   "1064899150026",
+			FeeTerminalType: 0,
+
 			MsgFmt:           8,
 			MsgSrc:           "150026",
 			FeeType:          "01",
-			FeeCode:          "11",
-			ValidTime:        "",
-			AtTime:           "",
+			FeeCode:          "10",
+			ValidTime:        "160605131555101+",
 			SrcId:            "1064899150026",
 			DestUsrTl:        1,
-			DestTerminalId:   []string{"1064820137721"},
-			DestTerminalType: 1,
+			DestTerminalId:   []string{"1064820033226"},
+			DestTerminalType: 0,
 			MsgLength:        uint8(len(cont)),
 			MsgContent:       cont,
 		}
 
-		println("Start to send req")
+		log.Println("Start to send req")
 		err = client.SendReqPkt(p)
 		if err != nil {
 			log.Printf("send a cmpp3 submit request error: %s.", err)
@@ -73,13 +75,14 @@ func main() {
 
 	for {
 
-		println("Receiving.....")
 		i, err := client.RecvAndUnpackPkt(0)
 		if goutils.HasErrorAndPrintStack(err) {
 			break
 		}
 
-		fmt.Printf("%+v\n", i)
+		log.Printf("Received a response: \n%+v\n\n", i)
+
+		// break
 	}
 
 	// time.Sleep(5 * time.Second)
