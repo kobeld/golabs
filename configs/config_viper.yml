@@ -1,0 +1,31 @@
+api:
+  dev:
+    baseConfig:
+      httpPort: ":8080"
+      rpcPort: ":8090"
+      env: "dev"
+    dbUrl: "localhost:2357"
+    dbName: "db_api_dev"
+    services:
+      user:
+        host: localhost
+        httpPort: :3000
+        rpcPort: :4000
+      qiniu:
+        host: localhost
+        httpPort: :3001
+        rpcPort: :4001
+
+  staging:
+    baseConfig:
+      httpPort: ":7070"
+      rpcPort: ":7080"
+      env: "dev"
+    dbUrl: "localhost:2357"
+    dbName: "db_api_staging"
+
+user:
+  dev:
+    rpcPort: ":4003"
+  staging:
+    rpcPort: ":3003"

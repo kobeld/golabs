@@ -1,0 +1,10 @@
+api:
+  dev:
+    baseConfig:
+      httpPort: ":8080"
+      rpcPort: ":8090"
+      env: "dev"
+    dbUrl: "localhost:2357"
+    dbName: "db_api_dev"
+
+
