@@ -33,7 +33,7 @@ func main() {
 
 		println("hehehehehe")
 		p := &cmpp.CmppQueryReqPkt{
-			QueryAt: "20160512",
+			QueryAt: "20160605",
 			Type:    0,
 			// Code:    "BJYG",
 		}

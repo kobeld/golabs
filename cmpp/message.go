@@ -34,16 +34,17 @@ func main() {
 		time.Sleep(2 * time.Second)
 
 		//submit a message
-		cont, err := cmpputils.Utf8ToUcs2("111")
+		cont, err := cmpputils.Utf8ToUcs2("good day")
 		if err != nil {
 			fmt.Printf("utf8 to ucs2 transform err: %s.", err)
 			return
 		}
+
 		p := &cmpp.Cmpp3SubmitReqPkt{
 			MsgId:              1,
 			PkTotal:            1,
 			PkNumber:           1,
-			RegisteredDelivery: 0,
+			RegisteredDelivery: 1,
 			MsgLevel:           0,
 			ServiceId:          "BJYG",
 
@@ -51,14 +52,15 @@ func main() {
 			// FeeTerminalId:   "1064899150026",
 			FeeTerminalType: 0,
 
-			MsgFmt:           8,
-			MsgSrc:           "150026",
-			FeeType:          "01",
-			FeeCode:          "10",
-			ValidTime:        "160605131555101+",
-			SrcId:            "861064899150026",
-			DestUsrTl:        1,
-			DestTerminalId:   []string{"861064848022003"},
+			MsgFmt:  8,
+			MsgSrc:  "150026",
+			FeeType: "01",
+			FeeCode: "10",
+			// ValidTime:        "160605131555101+",
+			SrcId:          "1064899150026",
+			DestUsrTl:      1,
+			DestTerminalId: []string{"1064848022012"},
+			// DestTerminalId:   []string{"1064848022012"},
 			DestTerminalType: 0,
 			MsgLength:        uint8(len(cont)),
 			MsgContent:       cont,
