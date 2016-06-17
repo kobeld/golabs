@@ -59,7 +59,7 @@ func main() {
 			// ValidTime:        "160605131555101+",
 			SrcId:          "1064899150026",
 			DestUsrTl:      1,
-			DestTerminalId: []string{"1064848022012"},
+			DestTerminalId: []string{"1064848022010"},
 			// DestTerminalId:   []string{"1064848022012"},
 			DestTerminalType: 0,
 			MsgLength:        uint8(len(cont)),
