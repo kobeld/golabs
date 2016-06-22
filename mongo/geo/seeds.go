@@ -25,7 +25,7 @@ func (this *Shop) MakeId() interface{} {
 
 type Location struct {
 	Type        string
-	Coordinates []float64
+	Coordinates []float32
 }
 
 func main() {
@@ -42,7 +42,7 @@ func main() {
 		"Haneda Airport",
 	}
 
-	coords := [][]float64{
+	coords := [][]float32{
 		{151.20699, -33.867487},
 		{139.7011064, 35.692474},
 		{139.70328368, 35.69146649},

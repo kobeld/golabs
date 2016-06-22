@@ -25,7 +25,7 @@ func (this *Shop) MakeId() interface{} {
 
 type Location struct {
 	Type        string
-	Coordinates []float64
+	Coordinates []float32
 }
 
 func main() {
@@ -35,15 +35,15 @@ func main() {
 		err   error
 		shops []*Shop
 
-		long  = 139.701642
-		lat   = 35.690647
-		scope = 3000
+		long  float32 = 139.701642
+		lat   float32 = 35.690647
+		scope         = 3000
 
 		query = bson.M{
 			"location": bson.M{"$nearSphere": bson.M{
 				"$geometry": bson.M{
 					"type":        "Point",
-					"coordinates": []float64{long, lat},
+					"coordinates": []float32{long, lat},
 				},
 				"$maxDistance": scope,
 			}},
@@ -52,7 +52,7 @@ func main() {
 
 	// err = mgowrap.FindAll(query, &shops)
 
-	err = mgowrap.FindWithLimit(query, &shops, 1)
+	err = mgowrap.FindWithLimit(query, &shops, 3)
 	if goutils.HasErrorAndPrintStack(err) {
 		return
 	}
