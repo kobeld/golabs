@@ -20,4 +20,8 @@ func main() {
 	println("Sent")
 	println(n)
 
+	buf := make([]byte, 1024)
+	_, err = conn.Read(buf)
+	println(string(buf))
+
 }
