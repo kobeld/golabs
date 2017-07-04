@@ -1,6 +1,10 @@
 package main
 
-import mqtt "git.eclipse.org/gitroot/paho/org.eclipse.paho.mqtt.golang.git"
+import (
+	"time"
+
+	mqtt "git.eclipse.org/gitroot/paho/org.eclipse.paho.mqtt.golang.git"
+)
 
 func main() {
 	var (
@@ -41,10 +45,10 @@ func main() {
 	// 	panic(token.Error())
 	// }
 
-	// time.Sleep(3 * time.Second)
+	time.Sleep(3 * time.Second)
 
-	for client.IsConnected() {
-	}
+	// for client.IsConnected() {
+	// }
 
 	println("Stop")
 
