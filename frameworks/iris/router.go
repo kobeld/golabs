@@ -1,22 +1,22 @@
 package main
 
-import (
-	"github.com/kataras/iris"
-)
+import "github.com/kataras/iris/v12"
 
 func main() {
+	app := iris.New()
 
-	iris.Get("/users", func(c *iris.Context) {
-		c.Write("All users")
+	app.Get("/users", func(c iris.Context) {
+		c.WriteString("All users")
 	})
 
-	iris.Get("/users/*id", func(c *iris.Context) {
-		c.Write("User %s", c.Param("id"))
+	app.Get("/users/{id:uint}", func(c iris.Context) {
+		userID := c.Params().GetUintDefault("id", 0)
+		c.Writef("UserID: %d", userID)
 	})
 
-	iris.Get("/users/aaron", func(c *iris.Context) {
-		c.Write("Hello aaron")
+	app.Get("/users/aaron", func(c iris.Context) {
+		c.WriteString("Hello aaron")
 	})
 
-	iris.Listen(":8080")
+	app.Run(iris.Addr(":8080"))
 }
